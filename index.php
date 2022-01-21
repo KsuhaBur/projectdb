@@ -1,7 +1,6 @@
 <?php
 include 'function.php';
 include 'php/database_array.php';
-//include "list-history.php";
 
 ?>
 
@@ -28,7 +27,7 @@ include 'php/database_array.php';
         </header>
         <div class="sidenav">
             <?php foreach ($database_array as $database) {
-                echo "<button type='submit' class=\"dropdown-btn\" value=$database >";
+                echo "<button type='button' class=\"dropdown-btn\" value=$database >";
                 echo $database;
                 echo "<i class=\"fa fa-caret-down\"></i>";
                 echo "</button>";
@@ -52,6 +51,9 @@ include 'php/database_array.php';
                 <button class="Button" type="button" id="btn_run" onclick="click_btn()">
                     Run
                 </button>
+                <div class="Select__database" id="database_selected">
+
+                </div>
             </div>
             <textarea id="input_code" name="input_code" class="inputCode" ></textarea>
         </form>
@@ -62,30 +64,27 @@ include 'php/database_array.php';
     </main>
 
     <script>
-
-
-
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
-        dropdown[0].classList.add("active");
-        var dropdownContent = dropdown[0].nextElementSibling;
-            dropdownContent.style.display = "block";
+        // dropdown[0].classList.add("active");
+        // dropdown[0].nextElementSibling.style.display = "block";
 
         for (i = 0; i < dropdown.length; i++) {
             dropdown.valueOf()
             dropdown[i].addEventListener("click", function() {
                 for (var j = 0; j < dropdown.length; j++) {
                     dropdown[j].classList.remove("active");
-                    var dropdownContent = dropdown[j].nextElementSibling;
-                    dropdownContent.style.display = "none";
+                    dropdown[j].nextElementSibling.style.display = "none";
                 }
                 this.classList.add("active");
-                var dropdownContent = this.nextElementSibling;
-                dropdownContent.style.display = "block";
+                this.nextElementSibling.style.display = "block";
+
+                var filename = this.value;
+                $("#database_selected").text(filename);
             });
+
+
         }
-
-
     </script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

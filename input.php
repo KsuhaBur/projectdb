@@ -2,6 +2,6 @@
 
 include 'function.php';
 
-echo query_db($_POST['query'], 'sqlite.db');
+echo query_db($_POST['query'], $_POST['database']);
 
 ?>
