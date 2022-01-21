@@ -1,9 +1,9 @@
 <?php
 
-include 'database_array.php';
+include 'php/database_array.php';
 
 $array_history = array();
-array_push($array_history, $_POST['input_code']);
+
 
 //$file = $_GET['value'];
 $file = $database_array[0];
@@ -12,6 +12,7 @@ function query_db($query_string, $filename) {
     $db = new PDO('sqlite:'.$filename);
     $query = $db->query($query_string);
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    echo "<table id=\"table\">";
     foreach ($rows as $item) {
         echo "<tr>";
         foreach ($item as $value) {
@@ -23,6 +24,7 @@ function query_db($query_string, $filename) {
         }
         echo "</tr>";
     }
+    echo "</table>";
 }
 
 function get_table($filename) {

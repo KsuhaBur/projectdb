@@ -1,7 +1,7 @@
 <?php
 include 'function.php';
-include 'database_array.php';
-include "list-history.php";
+include 'php/database_array.php';
+//include "list-history.php";
 
 ?>
 
@@ -28,7 +28,7 @@ include "list-history.php";
         </header>
         <div class="sidenav">
             <?php foreach ($database_array as $database) {
-                echo "<button type='submit' class=\"dropdown-btn\" value=$database onclick='get_file()'>";
+                echo "<button type='submit' class=\"dropdown-btn\" value=$database >";
                 echo $database;
                 echo "<i class=\"fa fa-caret-down\"></i>";
                 echo "</button>";
@@ -42,13 +42,6 @@ include "list-history.php";
     <aside class="Errors">
         <div class="listErrors">
             <ul>
-                <?php
-                    foreach ($array_history as $item) {
-                        echo "<li>";
-                        print $item;
-                        echo "</li>";
-                    }
-                ?>
             </ul>
 
         </div>
@@ -56,29 +49,27 @@ include "list-history.php";
     <main class="Main">
         <form id="formx" class="codeZone" method="post">
             <div class="codeZone__block">
-                <button class="Button" type="submit">
+                <button class="Button" type="button" id="btn_run" onclick="click_btn()">
                     Run
                 </button>
             </div>
-            <textarea id="input_code" name="input_code" class="inputCode" ><?php print $_POST['input_code']; ?></textarea>
+            <textarea id="input_code" name="input_code" class="inputCode" ></textarea>
         </form>
-        <section class="tableZone">
-            <table>
-                <?php
-                    if ($_POST['input_code']) {
-                        query_db($_POST['input_code'], $file);
-                    }
-                ?>
+        <section class="tableZone" id="table_zone">
+            <table id="table">
             </table>
         </section>
     </main>
 
     <script>
+
+
+
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
-        // dropdown[0].classList.add("active");
-        // var dropdownContent = dropdown[0].nextElementSibling;
-        //     dropdownContent.style.display = "block";
+        dropdown[0].classList.add("active");
+        var dropdownContent = dropdown[0].nextElementSibling;
+            dropdownContent.style.display = "block";
 
         for (i = 0; i < dropdown.length; i++) {
             dropdown.valueOf()
@@ -94,13 +85,8 @@ include "list-history.php";
             });
         }
 
-        function get_file() {
-            var value = this.value;
-            $.get('http://projectdb/index.php', {value:value}, function (data) {
-                // alert(data);
-            });
-        }
-    </script>
 
+    </script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
