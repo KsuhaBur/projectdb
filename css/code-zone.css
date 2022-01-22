@@ -4,15 +4,24 @@
     overflow-y: hidden;
 }
 
-.codeZone__block {
+.codeZone__header {
     padding: 10px;
     background-color: rgb(249, 235, 250);
     border-bottom: solid 1px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Select__database {
+    font-size: 18px;
+    border-left: solid 2px lightgray;
+    padding: 5px;
 }
 
 .inputCode {
-    min-height: 100%;
-    width: 99.6%;
+   min-height: 100%;
+    width: 100%;
     border: none;
     font-size: 18px;
     background-color: rgba(249, 235, 250, 0.3);

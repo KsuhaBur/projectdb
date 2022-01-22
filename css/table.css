@@ -1,13 +1,5 @@
-tr, td {
-    padding: 5px;
-    border: solid 1px black;
-}
-
-table {
-    border-collapse: collapse;
-    border: solid 1px black;
-}
 
 .tableZone {
-    padding: 30px 10px;
+    padding-top: 5px;
+    padding-bottom: 50px;
 }
