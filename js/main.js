@@ -1,6 +1,7 @@
 function click_btn() {
     var query = $("#input_code").val();
-    var database = document.getElementById('database_selected').innerHTML;
+    document.getElementById('database_selected').innerHTML;
+    var database = $("#database_selected").text();
 
     $.ajax({
         url: 'input.php',

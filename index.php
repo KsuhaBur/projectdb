@@ -20,10 +20,10 @@ include 'php/database_array.php';
 <body>
     <aside class="Aside">
         <header class="Aside__header">
-            <button class="Button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Open file
             </button>
-            <button class="Button" type="button">
+            <button class="btn btn-primary" type="button">
                 Save file
             </button>
         </header>
@@ -51,7 +51,7 @@ include 'php/database_array.php';
     <main class="Main">
         <form id="formx" class="codeZone" method="post">
             <div class="codeZone__header">
-                <button class="Button" type="button" id="btn_run" onclick="click_btn()">
+                <button class="btn btn-primary" type="button" id="btn_run" onclick="click_btn()">
                     Run
                 </button>
                 <div class="Select__database" id="database_selected">

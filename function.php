@@ -4,17 +4,27 @@ function query_db($query_string, $filename) {
     $db = new PDO('sqlite:'.$filename);
     $query = $db->query($query_string);
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-    echo "<table id=\"table\" class=\"table table-striped\">";
-    foreach ($rows as $item) {
+    if ($rows) {
+        echo "<table id=\"table\" class=\"table table-striped\">";
         echo "<tr>";
-        foreach ($item as $value) {
+        foreach ($rows[0] as $key=>$value) {
             echo "<td>";
-            print_r($value);
+            print_r($key);
             echo "</td>";
         }
         echo "</tr>";
+        foreach ($rows as $item) {
+            echo "<tr>";
+            foreach ($item as $value) {
+                echo "<td>";
+                print_r($value);
+                echo "</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
     }
-    echo "</table>";
+
 }
 
 function get_table($filename) {
@@ -25,9 +35,6 @@ function get_table($filename) {
     foreach ($array_table as $tables) {
         foreach ($tables as $table) {
             $string .= '<a>'.$table.'</a>';
-//            echo "<a>";
-//            print_r($table);
-//            echo "</a>";
         }
     }
     return $string;

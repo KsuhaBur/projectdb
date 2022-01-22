@@ -6,7 +6,7 @@
 
 .codeZone__header {
     padding: 10px;
-    background-color: rgb(249, 235, 250);
+    background-color: #cff4fc;
     border-bottom: solid 1px black;
     display: flex;
     flex-direction: row;
@@ -15,7 +15,7 @@
 
 .Select__database {
     font-size: 18px;
-    border-left: solid 2px lightgray;
+    border-left: solid 2px #084298;
     padding: 5px;
 }
 
@@ -24,7 +24,7 @@
     width: 100%;
     border: none;
     font-size: 18px;
-    background-color: rgba(249, 235, 250, 0.3);
+    background-color:  #f8f9fa;
 }
 
 .inputCode:active, .inputCode:hover {

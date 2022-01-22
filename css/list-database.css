@@ -11,15 +11,11 @@
     border-bottom: solid 1px black;
 }
 
-.Aside {
-    border-right: solid 1px grey;
-}
-
 .sidenav {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: grey;
+    background-color: #052c65;
     /*padding-top: 20px;*/
 }
 
@@ -36,7 +32,6 @@
     cursor: pointer;
     outline: none;
     color: white;
-    /*background-color: grey;*/
 }
 
 /* При наведении курсора мыши */
@@ -46,14 +41,14 @@
 
 /* Добавить активный класс для кнопки активного выпадающего списка */
 .active {
-    background-color: green;
+    background-color: #0d6efd;
     color: white;
 }
 
 /* Выпадающий контейнер (по умолчанию скрыт). Необязательно: добавьте более светлый цвет фона и некоторые левые отступы, чтобы изменить дизайн выпадающего содержимого */
 .dropdown-container {
     display: none;
-    background-color: lightgreen;
+    background-color: #6ea8fe;
     padding-left: 25px;
 }
 
