@@ -1,5 +1,13 @@
-
 .tableZone {
     padding-bottom: 70px;
     background-color:  #e8f6ff;
+    height: 100%;
+    overflow-y: auto;
+    align-items: center;
+}
+
+.message {
+    display: block;
+    margin: 20px;
+    font-size: 18px;
 }

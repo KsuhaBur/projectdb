@@ -1,7 +1,7 @@
 function click_btn() {
     var query = $("#input_code").val();
-    document.getElementById('database_selected').innerHTML;
     var database = $("#database_selected").text();
+    $("#history_list").after("<li class='item'>" + query + "</li>");
 
     $.ajax({
         url: 'input.php',
@@ -11,12 +11,12 @@ function click_btn() {
         dataType: 'html',
         success: function (data) {
             $("#table").remove();
+            $("#message").remove();
             $("#table_zone").append(data);
         }
     });
 }
 
-// перенести в другой файл
 function dropdownStyle() {
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
@@ -37,9 +37,6 @@ function dropdownStyle() {
     }
 }
 
-dropdownStyle();
-
-
 //
 function addFile() {
     $("#btn_close").trigger("click");
@@ -48,12 +45,12 @@ function addFile() {
 function addInSidenav(data) {
     eval ('var file = ' + data);
     var filename = file.filename;
-    var file_tales = file.pathname;
+    var file_tables = file.pathname;
     var sidenav = document.getElementById("sidenav");
     var string = "<button id='dropdown-btn' type='button' class='dropdown-btn' value=" + filename + ">" +
         filename + "<i class='fa fa-caret-down'></i>" + "</button>" +
         "<div class='dropdown-container'>" +
-        file_tales
+        file_tables
         + "</div>";
     sidenav.innerHTML += string;
     dropdownStyle();
@@ -72,3 +69,5 @@ function downloadFile() {
         }
     });
 }
+
+dropdownStyle();

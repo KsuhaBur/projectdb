@@ -1,6 +1,6 @@
 <?php
 include 'function.php';
-include 'php/database_array.php';
+include 'database_array.php';
 array_map('unlink', glob('temp/*'));
 ?>
 
@@ -14,7 +14,7 @@ array_map('unlink', glob('temp/*'));
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://yandex.st/jquery/1.5.0/jquery.min.js" type="text/javascript"></script>
-    <title>Title</title>
+    <title>Online IDE</title>
 </head>
 
 <body>
@@ -23,29 +23,31 @@ array_map('unlink', glob('temp/*'));
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Open file
             </button>
-            <form action="save_file.php" method="get" >
+            <form action="save_file.php" method="get">
                 <input onclick="downloadFile()" name="save" id="save" type="submit" class="btn btn-primary" value="Save file">
             </form>
         </header>
         <div id="sidenav" class="sidenav">
-            <?php foreach ($database_array as $database) {
+            <?php
+            foreach ($database_array as $database) {
                 echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
                 echo $database;
                 echo "<i class=\"fa fa-caret-down\"></i>";
                 echo "</button>";
                 echo "<div class=\"dropdown-container\">";
-                echo get_table($database);
+                echo get_table('db/'.$database);
                 echo "</div>";
             }
             ?>
-
         </div>
     </aside>
-    <aside class="Errors">
-        <div class="listErrors">
-            <ul>
-            </ul>
+    <aside class="History">
+        <div class="History__header">
+            <div class="History__title">История запросов</div>
         </div>
+        <ul class="History__list" id="history_list">
+
+        </ul>
     </aside>
     <main class="Main">
         <form id="formx" class="codeZone" method="post">
@@ -55,7 +57,7 @@ array_map('unlink', glob('temp/*'));
                 </button>
                 <div class="Select__database" id="database_selected"></div>
             </div>
-            <textarea id="input_code" name="input_code" class="inputCode"></textarea>
+            <textarea id="input_code" name="input_code" class="inputCode" placeholder="Введите sql-запрос"></textarea>
         </form>
         <section class="tableZone" id="table_zone">
             <table id="table" class="table table-striped">
@@ -85,7 +87,6 @@ array_map('unlink', glob('temp/*'));
     </div>
 
     <script>
-
     </script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

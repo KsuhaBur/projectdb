@@ -1,7 +1,7 @@
 <?php
 
 //include "function.php";
-include "php/database_array.php";
+include "database_array.php";
 
 function file_force_download($file) {
     if (file_exists($file)) {
@@ -27,13 +27,12 @@ function file_force_download($file) {
 
 if(isset($_GET['save'])) {
     if (in_array($_GET['save'], $database_array)) {
-        $file = $_GET['save'];
+        $file = 'db/'.$_GET['save'];
     } else {
         $file = 'temp/'.$_GET['save'];
     }
 
     file_force_download($file);
-
 }
 
 

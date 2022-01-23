@@ -4,34 +4,8 @@ body, html {
     margin: 0;
 }
 
-.Aside {
-    display: block;
-    float: left;
-    min-width: 250px;
-    background: #cff4fc;
-    height: 100%;
-}
-
 .Main {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.tableZone {
-    /*background-color: lightgray;*/
-    height: 100%;
-    overflow-y: auto;
-}
-
-.Errors {
-    display: block;
-    float: right;
-    height: 100%;
-    min-width: 300px;
-    background-color: lightgray;
-}
-
-.listErrors {
-    padding-top: 50px;
 }

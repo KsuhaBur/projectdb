@@ -25,6 +25,9 @@
     border: none;
     font-size: 18px;
     background-color:  #f8f9fa;
+    outline: none;
+    -moz-appearance: none;
+    padding: 5px;
 }
 
 .inputCode:active, .inputCode:hover {
