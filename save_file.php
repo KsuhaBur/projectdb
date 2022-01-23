@@ -1,9 +1,9 @@
 <?php
 
 //include "function.php";
-include "database_array.php";
+include "php/database_array.php";
 
-function file_download($file) {
+function file_force_download($file) {
     if (file_exists($file)) {
         // сбрасываем буфер вывода PHP, чтобы избежать переполнения памяти выделенной под скрипт
         // если этого не сделать файл будет читаться в память полностью!
@@ -21,17 +21,20 @@ function file_download($file) {
         header('Content-Length: ' . filesize($file));
         // читаем файл и отправляем его пользователю
         readfile($file);
-        exit;
+        exit("Ok");
     }
 }
 
-if(isset($_POST['filename'])) {
-    if (in_array($_POST['filename'], $database_array)) {
-        $file = $_POST['filename'];
+if(isset($_GET['save'])) {
+    if (in_array($_GET['save'], $database_array)) {
+        $file = $_GET['save'];
     } else {
-        $file = 'temp/'.$_POST['filename'];
+        $file = 'temp/'.$_GET['save'];
     }
-    file_download($file);
+
+    file_force_download($file);
+
 }
+
 
 ?>

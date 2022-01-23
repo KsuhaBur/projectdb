@@ -1,7 +1,7 @@
 <?php
 include 'function.php';
 include 'php/database_array.php';
-
+array_map('unlink', glob('temp/*'));
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +23,9 @@ include 'php/database_array.php';
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Open file
             </button>
-            <button class="btn btn-primary" type="button">
-                Save file
-            </button>
+            <form action="save_file.php" method="get" >
+                <input onclick="downloadFile()" name="save" id="save" type="submit" class="btn btn-primary" value="Save file">
+            </form>
         </header>
         <div id="sidenav" class="sidenav">
             <?php foreach ($database_array as $database) {
@@ -45,7 +45,6 @@ include 'php/database_array.php';
         <div class="listErrors">
             <ul>
             </ul>
-
         </div>
     </aside>
     <main class="Main">
@@ -54,11 +53,9 @@ include 'php/database_array.php';
                 <button class="btn btn-primary" type="button" id="btn_run" onclick="click_btn()">
                     Run
                 </button>
-                <div class="Select__database" id="database_selected">
-
-                </div>
+                <div class="Select__database" id="database_selected"></div>
             </div>
-            <textarea id="input_code" name="input_code" class="inputCode" ></textarea>
+            <textarea id="input_code" name="input_code" class="inputCode"></textarea>
         </form>
         <section class="tableZone" id="table_zone">
             <table id="table" class="table table-striped">
@@ -88,19 +85,7 @@ include 'php/database_array.php';
     </div>
 
     <script>
-        function addInSidenav(data) {
-            eval ('var file = ' + data);
-            var filename = file.filename;
-            var file_tales = file.pathname;
-            var sidenav = document.getElementById("sidenav");
-            var string = "<button id='dropdown-btn' type='button' class='dropdown-btn' value=" + filename + ">" +
-                filename + "<i class='fa fa-caret-down'></i>" + "</button>" +
-                "<div class='dropdown-container'>" +
-                file_tales
-                + "</div>";
-            sidenav.innerHTML += string;
-            dropdownStyle();
-        }
+
     </script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

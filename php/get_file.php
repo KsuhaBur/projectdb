@@ -1,5 +1,5 @@
 <?php
-
-echo $_GET['filename'];
-
-?>
+//
+//echo $_GET['filename'];
+//
+//?>

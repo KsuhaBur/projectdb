@@ -17,7 +17,6 @@ function click_btn() {
 }
 
 // перенести в другой файл
-
 function dropdownStyle() {
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
@@ -46,3 +45,30 @@ function addFile() {
     $("#btn_close").trigger("click");
 }
 
+function addInSidenav(data) {
+    eval ('var file = ' + data);
+    var filename = file.filename;
+    var file_tales = file.pathname;
+    var sidenav = document.getElementById("sidenav");
+    var string = "<button id='dropdown-btn' type='button' class='dropdown-btn' value=" + filename + ">" +
+        filename + "<i class='fa fa-caret-down'></i>" + "</button>" +
+        "<div class='dropdown-container'>" +
+        file_tales
+        + "</div>";
+    sidenav.innerHTML += string;
+    dropdownStyle();
+}
+
+function downloadFile() {
+    var filename = $("#database_selected").text();
+    $("#save").val(filename);
+
+    $.ajax({
+        url: 'save_file.php',
+        type: "GET",
+        data: {'file': filename},
+        success: function (data) {
+            $("#save").val("Save file");
+        }
+    });
+}
