@@ -31,7 +31,16 @@ copy('db/films.db', 'temp/films.db');
         </header>
         <div id="sidenav" class="sidenav">
             <?php
-            echo draw_sidenav($database_array);
+//            echo draw_sidenav($database_array);
+            foreach ($database_array as $database) {
+                echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
+                echo $database;
+                echo "<i class=\"fa fa-caret-down\"></i>";
+                echo "</button>";
+                echo "<div id='".$database."' class=\"dropdown-container\">";
+                echo get_table('temp/'.$database);
+                echo "</div>";
+            }
             ?>
         </div>
     </aside>
@@ -80,14 +89,6 @@ copy('db/films.db', 'temp/films.db');
         </div>
     </div>
 
-    <script>
-        //function updateSidenav() {
-        //    var str = <?php //echo draw_sidenav($database_array) ?>//;
-        //    $("#sidenav").append(str);
-        //    alert(str);
-        //
-        //}
-    </script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

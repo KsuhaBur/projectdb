@@ -5,6 +5,7 @@
     max-width: 300px;
     background: #cff4fc;
     height: 100%;
+    overflow-y: auto;
 }
 
 .Aside__listDataBase {

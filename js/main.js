@@ -2,6 +2,8 @@ function click_btn() {
     var query = $("#input_code").val();
     var database = $("#database_selected").text();
     $("#history_list").after("<li class='item'>" + query + "</li>");
+    var selected_database = document.getElementById(database);
+    selected_database.innerText = ''
 
     $.ajax({
         url: 'input.php',
@@ -15,6 +17,15 @@ function click_btn() {
             $("#table_zone").append(data);
         }
     });
+}
+
+function updateSidenav(data) {
+    eval ('var file = ' + data);
+    var filename = file.filename;
+    var list_tables = file.pathname;
+    var but = document.getElementById(filename);
+    var sidenav = $("#sidenav");
+    but.innerHTML += (list_tables);
 }
 
 function dropdownStyle() {
@@ -49,7 +60,7 @@ function addInSidenav(data) {
     var sidenav = document.getElementById("sidenav");
     var string = "<button id='dropdown-btn' type='button' class='dropdown-btn' value=" + filename + ">" +
         filename + "<i class='fa fa-caret-down'></i>" + "</button>" +
-        "<div class='dropdown-container'>" +
+        "<div id='" + filename + "' class='dropdown-container'>" +
         file_tables
         + "</div>";
     sidenav.innerHTML += string;

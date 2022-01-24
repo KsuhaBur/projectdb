@@ -3,9 +3,10 @@
     float: right;
     height: 100%;
     min-width: 300px;
+    max-width: 350px;
     background-color: #cff4fc;
-    overflow-y: auto;
     border-left: solid 1px black;
+    overflow-y: auto;
 }
 
 .History__header {
@@ -31,13 +32,13 @@
     flex-direction: column;
     justify-content: flex-start;
     text-align: center;
-
 }
 
 .item {
     font-size: 20px;
-    color: black;
+    /*color: black;*/
     padding: 10px;
     list-style: none;
     text-align: center;
+    color: #052c65;
 }

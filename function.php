@@ -3,42 +3,56 @@
 include "database_array.php";
 
 function query_db($query_string, $filename) {
+    $return = '';
     if (!$query_string and $filename) {
-        echo "<div id='message' class='message'>Query cannot be empty</div>";
-        exit();
+        $return .= "<div id='message' class='message'>Query cannot be empty</div>";
+        return $return;
+//        exit();
     }
     try {
         $db = new PDO('sqlite:'.$filename);
         $query = $db->query($query_string);
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         if ($rows) {
-            echo "<table id=\"table\" class=\"table table-striped\">";
-            echo "<tr>";
+            $return .= "<table id=\"table\" class=\"table table-striped\"> <tr>";
+//            echo "<table id=\"table\" class=\"table table-striped\">";
+//            echo "<tr>";
             foreach ($rows[0] as $key=>$value) {
-                echo "<td>";
-                print_r($key);
-                echo "</td>";
+                $return .= "<td>".$key."</td>";
+//                echo "<td>";
+//                print_r($key);
+//                echo "</td>";
             }
-            echo "</tr>";
+            $return .= "</tr>";
+//            echo "</tr>";
             foreach ($rows as $item) {
-                echo "<tr>";
+                $return .= "<tr>";
+//                echo "<tr>";
                 foreach ($item as $value) {
-                    echo "<td>";
-                    print_r($value);
-                    echo "</td>";
+                    $return .= "<td>".$value."</td>";
+//                    echo "<td>";
+//                    print_r($value);
+//                    echo "</td>";
                 }
-                echo "</tr>";
+                $return .= "</tr>";
+//                echo "</tr>";
             }
-            echo "</table>";
+            $return .= "</table>";
+//            echo "</table>";
+            return $return;
         } else {
-            echo "<div id='message' class='message'>";
-            echo "Запрос выполнен успешно";
-            echo "</div>";
+            $return .= "<div id='message' class='message'>Запрос выполнен успешно</div>";
+//            echo "<div id='message' class='message'>";
+//            echo "Запрос выполнен успешно";
+//            echo "</div>";
+            return $return;
         }
     } catch (PDOException $e) {
-        echo "<div id='message' class='message'>";
-        echo $e->getMessage();
-        echo "</div>";
+        $return .= "<div id='message' class='message'>".$e->getMessage()."</div>";
+//        echo "<div id='message' class='message'>";
+//        echo $e->getMessage();
+//        echo "</div>";
+        return $return;
     }
 }
 
@@ -59,21 +73,22 @@ function get_table($filename) {
     }
 }
 
-function draw_sidenav($database_array) {
-    $string = '';
-    foreach ($database_array as $database) {
-//        echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
-//        echo $database;
-//        echo "<i class=\"fa fa-caret-down\"></i>";
-//        echo "</button>";
-//        echo "<div class=\"dropdown-container\">";
-//        echo get_table('temp/'.$database);
-//        echo "</div>";
-        $string .= "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=";
-        $string .= $database."> <i class=\"fa fa-caret-down\"></i>".
-            $database."</button> <div class=\"dropdown-container\">".
-            get_table('temp/'.$database)."</div>";
-    }
-    return $string;
-}
+//function draw_sidenav($database) {
+//    $string = '';
+////    foreach ($database_array as $database) {
+////        echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
+////        echo $database;
+////        echo "<i class=\"fa fa-caret-down\"></i>";
+////        echo "</button>";
+////        echo "<div class=\"dropdown-container\">";
+////        echo get_table('temp/'.$database);
+////        echo "</div>";
+//
+////        $string .= "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=";
+////        $string .= $database."> <i class=\"fa fa-caret-down\"></i>".
+//         $string .= $database."</button> <div id='".$database."' class=\"dropdown-container\">".
+//            get_table('temp/'.$database)."</div>";
+////    }
+//    return $string;
+//}
 ?>
