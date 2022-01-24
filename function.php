@@ -4,7 +4,7 @@ include "database_array.php";
 
 function query_db($query_string, $filename) {
     if (!$query_string and $filename) {
-        echo "<div id='message' class='message'>Error: Query cannot be empty</div>";
+        echo "<div id='message' class='message'>Query cannot be empty</div>";
         exit();
     }
     try {
@@ -36,7 +36,6 @@ function query_db($query_string, $filename) {
             echo "</div>";
         }
     } catch (PDOException $e) {
-
         echo "<div id='message' class='message'>";
         echo $e->getMessage();
         echo "</div>";
@@ -60,5 +59,21 @@ function get_table($filename) {
     }
 }
 
-
+function draw_sidenav($database_array) {
+    $string = '';
+    foreach ($database_array as $database) {
+//        echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
+//        echo $database;
+//        echo "<i class=\"fa fa-caret-down\"></i>";
+//        echo "</button>";
+//        echo "<div class=\"dropdown-container\">";
+//        echo get_table('temp/'.$database);
+//        echo "</div>";
+        $string .= "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=";
+        $string .= $database."> <i class=\"fa fa-caret-down\"></i>".
+            $database."</button> <div class=\"dropdown-container\">".
+            get_table('temp/'.$database)."</div>";
+    }
+    return $string;
+}
 ?>

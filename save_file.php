@@ -26,12 +26,7 @@ function file_force_download($file) {
 }
 
 if(isset($_GET['save'])) {
-    if (in_array($_GET['save'], $database_array)) {
-        $file = 'db/'.$_GET['save'];
-    } else {
-        $file = 'temp/'.$_GET['save'];
-    }
-
+    $file = 'temp/'.$_GET['save'];
     file_force_download($file);
 }
 

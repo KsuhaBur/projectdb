@@ -2,6 +2,8 @@
 include 'function.php';
 include 'database_array.php';
 array_map('unlink', glob('temp/*'));
+copy('db/sqlite.db', 'temp/sqlite.db');
+copy('db/films.db', 'temp/films.db');
 ?>
 
 <!DOCTYPE html>
@@ -29,15 +31,7 @@ array_map('unlink', glob('temp/*'));
         </header>
         <div id="sidenav" class="sidenav">
             <?php
-            foreach ($database_array as $database) {
-                echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
-                echo $database;
-                echo "<i class=\"fa fa-caret-down\"></i>";
-                echo "</button>";
-                echo "<div class=\"dropdown-container\">";
-                echo get_table('db/'.$database);
-                echo "</div>";
-            }
+            echo draw_sidenav($database_array);
             ?>
         </div>
     </aside>
@@ -87,6 +81,12 @@ array_map('unlink', glob('temp/*'));
     </div>
 
     <script>
+        //function updateSidenav() {
+        //    var str = <?php //echo draw_sidenav($database_array) ?>//;
+        //    $("#sidenav").append(str);
+        //    alert(str);
+        //
+        //}
     </script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

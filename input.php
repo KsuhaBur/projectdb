@@ -3,12 +3,9 @@
 include 'database_array.php';
 include 'function.php';
 
-if (!in_array($_POST['database'], $database_array)) {
-    $filename = 'temp/'.$_POST['database'];
-} else {
-    $filename = 'db/'.$_POST['database'];
-}
+$filename = 'temp/'.$_POST['database'];
+$query = htmlspecialchars($_POST['query']);
 
-echo query_db($_POST['query'], $filename);
+echo query_db($query, $filename);
 
 ?>
