@@ -58,12 +58,15 @@ function addInSidenav(data) {
     var filename = file.filename;
     var file_tables = file.pathname;
     var sidenav = document.getElementById("sidenav");
-    var string = "<button id='dropdown-btn' type='button' class='dropdown-btn' value=" + filename + ">" +
-        filename + "<i class='fa fa-caret-down'></i>" + "</button>" +
-        "<div id='" + filename + "' class='dropdown-container'>" +
-        file_tables
-        + "</div>";
-    sidenav.innerHTML += string;
+    var button = document.getElementById("btn_" + filename);
+    if (!button) {
+        var string = "<button id='btn_"+ filename +"' type='button' class='dropdown-btn' value=" + filename + ">" +
+            filename + "<i id='icon_'"+ filename +" class='fa fa-caret-down'></i>" + "</button>" +
+            "<div id='" + filename + "' class='dropdown-container'>" +
+            file_tables
+            + "</div>";
+        sidenav.innerHTML += string;
+    }
     dropdownStyle();
 }
 

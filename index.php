@@ -16,6 +16,7 @@ copy('db/films.db', 'temp/films.db');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://yandex.st/jquery/1.5.0/jquery.min.js" type="text/javascript"></script>
+
     <title>Online IDE</title>
 </head>
 
@@ -31,11 +32,10 @@ copy('db/films.db', 'temp/films.db');
         </header>
         <div id="sidenav" class="sidenav">
             <?php
-//            echo draw_sidenav($database_array);
             foreach ($database_array as $database) {
-                echo "<button id='dropdown-btn' type='button' class=\"dropdown-btn\" value=$database >";
+                echo "<button id='btn_".$database."' type='button' class=\"dropdown-btn\" value=$database >";
                 echo $database;
-                echo "<i class=\"fa fa-caret-down\"></i>";
+                echo "<i id='icon_'".$database." class=\"fa fa-caret-down\"></i>";
                 echo "</button>";
                 echo "<div id='".$database."' class=\"dropdown-container\">";
                 echo get_table('temp/'.$database);
